@@ -4,9 +4,10 @@ services:
     build:
       dockerfile: php.Dockerfile
       context: .
+    container_name: php74
     restart: always
     volumes:
-      - "./html/:/var/www/html"
+      - "./www/:/var/www/html"
     ports:
       - "8080:80"
   mysql-server:
@@ -14,6 +15,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
+    container_name: mysql5
     volumes:
       - mysql-data:/var/lib/mysql
 
@@ -26,5 +28,6 @@ services:
       PMA_PASSWORD: root
     ports:
       - "5000:80"
+    container_name: phpmyadmin
 volumes:
   mysql-data:
